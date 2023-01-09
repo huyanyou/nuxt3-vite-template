@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.41.1",
+    "unplugin-auto-import": "^0.12.1",
+    "unplugin-vue-components": "^0.22.12"
+  }
+}
