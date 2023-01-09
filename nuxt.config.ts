@@ -31,7 +31,7 @@ export default defineNuxtConfig({
                         sideEffect: true
                     })
                 ],
-                dirs: ['src/components', 'src/views/*/'],
+                // dirs: ['src/components', 'src/views/*/'],
                 extensions: ['vue'],
                 // include: [/.vue$/, /.vue?vue/],
                 deep: true,

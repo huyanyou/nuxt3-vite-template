@@ -1,22 +1,12 @@
 <script lang='ts' setup>
+const containRef = $ref<HTMLDivElement>()
+
 let visible = $ref(false);
 let parenNodeShow = $ref(false)
-const handleClick = () => {
-    visible = true;
-};
-const handleOk = () => {
-    visible = false;
-};
-const handleCancel = () => {
-    visible = false;
-}
+
 const showDetail = () => {
     visible = true
     parenNodeShow = true
-}
-const closeDetail = () => {
-    visible = false
-    parenNodeShow = false
 }
 // 鼠标移动到遮罩层关闭抽屉
 const moveCloseDetail = (event: MouseEvent) => {
@@ -27,6 +17,11 @@ const moveCloseDetail = (event: MouseEvent) => {
         visible = false
     }
 }
+
+let height = $ref('700px')
+onMounted(() => {
+    height = containRef?.clientHeight + 'px'
+})
 </script>
 
 <template>
@@ -44,11 +39,11 @@ const moveCloseDetail = (event: MouseEvent) => {
         <AAffix>
             <div v-show="parenNodeShow" id="parentNode" @mousemove="moveCloseDetail"></div>
         </AAffix>
-        <div style="height:1800px ; background-color: red;">
+        <div ref="containRef" style="background-color: red; height: 1800px;">
         </div>
     </div>
     <ADrawer :header="false" @close="parenNodeShow = false" popup-container="#parentNode" placement="top"
-        :visible="visible" @ok="handleOk" @cancel="handleCancel">
+        :visible="visible">
         <div>
             <ASpace direction="vertical" :size="16" style="display: block;">
                 <ARow class="grid-demo">
@@ -67,6 +62,7 @@ const moveCloseDetail = (event: MouseEvent) => {
 
 <style scoped lang="scss">
 .arco-page-header {
+    background-color: aliceblue;
 
     // 内容居中
     :deep(.arco-page-header-wrapper) {
@@ -77,7 +73,7 @@ const moveCloseDetail = (event: MouseEvent) => {
 }
 
 #parentNode {
-    height: calc(100vh - 78px);
+    height: v-bind('height');
     width: 100vw;
     position: absolute;
     top: 60px;
@@ -104,5 +100,8 @@ const moveCloseDetail = (event: MouseEvent) => {
 .grid-demo .arco-col:nth-child(2n + 1) {
     background-color: var(--color-primary-light-4);
 }
+</style>
+<style lang="scss">
+@import url('./index.scss');
 </style>
 
