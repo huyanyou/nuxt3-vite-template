@@ -16,7 +16,7 @@ export default defineNuxtConfig({
                     /\.vue\?vue/, // .vue
                     /\.md$/, // .md
                 ],
-                // dts: 'src/auto-imports.d.ts',
+                dts: 'auto-imports.d.ts',
                 imports: [
                     'vue',
                     'vue-router',
@@ -35,13 +35,17 @@ export default defineNuxtConfig({
                 extensions: ['vue'],
                 // include: [/.vue$/, /.vue?vue/],
                 deep: true,
-                // dts: 'src/components.d.ts',
+                dts: 'components.d.ts',
                 directives: true,
                 globalNamespaces: ['global'],
                 include: [/\.vue$/, /\.vue\?vue/],
             })
-        ]
+        ],
+        ssr: {
+            noExternal: ['moment', '@arco-design/web-vue', 'compute-scroll-into-view'],
+        },
     },
+    // plugins: ["@/plugins/arco-design"],
     srcDir: 'src/',
     experimental: {
         reactivityTransform: true,
@@ -49,7 +53,8 @@ export default defineNuxtConfig({
     },
     modules: [
     ],
-    ssr: true
+    ssr: true,
+    // components: { global: true, dirs: ['src/'] },
 })
 
 
