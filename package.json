@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.41.1",
+    "sass": "^1.57.1",
     "unplugin-auto-import": "^0.12.1",
     "unplugin-vue-components": "^0.22.12"
   }
