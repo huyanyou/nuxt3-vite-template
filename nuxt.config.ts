@@ -2,6 +2,7 @@
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+
 export default defineNuxtConfig({
     vite: {
         vue: {
@@ -44,6 +45,15 @@ export default defineNuxtConfig({
         ssr: {
             noExternal: ['moment', '@arco-design/web-vue', 'compute-scroll-into-view'],
         },
+        // server: {
+        //     proxy: {
+        //         '/api': {
+        //             target: 'http://localhost:8080',
+        //             changeOrigin: true,
+        //             rewrite: (path) => path.replace(/^\/api/, '')
+        //         }
+        //     }
+        // }
     },
     // plugins: ["@/plugins/arco-design"],
     srcDir: 'src/',
@@ -52,9 +62,10 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
     },
     modules: [
+        // ["@nuxtjs/axios", { proxyHeaders: false }]
     ],
-    ssr: true,
-    // components: { global: true, dirs: ['src/'] },
+    ssr: true
+
 })
 
 

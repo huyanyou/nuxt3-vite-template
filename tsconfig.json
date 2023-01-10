@@ -23,7 +23,7 @@
      // 引入arco类型
       "@arco-design/web-vue"
     ]
-  },
+  }
 
   // "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/*.d.ts"],
 }

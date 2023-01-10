@@ -1,5 +1,9 @@
 <script lang='ts' setup>
+import vite from 'unplugin-auto-import/vite';
+import axios from 'axios'
+
 const containRef = $ref<HTMLDivElement>()
+
 
 let visible = $ref(false);
 let parenNodeShow = $ref(false)
@@ -7,6 +11,17 @@ let parenNodeShow = $ref(false)
 const showDetail = () => {
     visible = true
     parenNodeShow = true
+    // axios.get('ping', {
+    //     baseURL: '/api'
+    // }).then(res => {
+    //     console.log('res', res)
+    // })
+    useFetch('ping', {
+        baseURL: '/api'
+    }).then(res => {
+        console.log('res', res)
+    })
+
 }
 // 鼠标移动到遮罩层关闭抽屉
 const moveCloseDetail = (event: MouseEvent) => {
@@ -19,8 +34,12 @@ const moveCloseDetail = (event: MouseEvent) => {
 }
 
 let height = $ref('700px')
-onMounted(() => {
+// const a = await $fetch('http://localhost:8080')
+onMounted(async () => {
     height = containRef?.clientHeight + 'px'
+    console.log('is dev', import.meta.env.BASE_URL)
+    // const res = await $fetch('/api/hello')
+    // console.log(res)
 })
 </script>
 
